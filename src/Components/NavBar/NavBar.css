@@ -1,0 +1,20 @@
+#button {
+  padding: 0;
+}
+
+#button li {
+  display: inline;
+}
+
+#button li a {
+  font-family: Arial;
+  font-size: 11px;
+  text-decoration: none;
+  padding: 10px;
+  background-color: #2175bc;
+  color: #fff;
+}
+.icono {
+    display: none;
+  max-width: 10px;
+}
