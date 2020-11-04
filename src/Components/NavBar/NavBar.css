@@ -1,19 +1,26 @@
+
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #2175bc;
+}
 #button {
   padding: 0;
 }
-
 #button li {
-  display: inline;
-}
-
-#button li a {
+ 
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-content: center;
   font-family: Arial;
   font-size: 11px;
   text-decoration: none;
   padding: 10px;
-  background-color: #2175bc;
+  
   color: #fff;
 }
+
 .icono {
     display: none;
   max-width: 10px;

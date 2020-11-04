@@ -7,13 +7,12 @@ class NavBar extends Component {
     render() {
         return (
             <div>
-
-                <ul id='button'>
-                    <li><a href='#'><CartIcon/></a></li>
-                    <li><a href='#'>Sobre nosotros</a></li>
-                    <li><a href='#'>Servicios</a></li>
-                    <li><a href='#'>Productos</a></li>
-                    <li><a href='#'>Contacto</a></li>
+                <ul id='button' class='navbar'> 
+                    <li id='icono'><CartIcon/></li>
+                    <li>Sobre nosotros</li>
+                    <li>Servicios</li>
+                    <li>Productos</li>
+                    <li>Contacto</li>
                 </ul>
             </div>
         )
