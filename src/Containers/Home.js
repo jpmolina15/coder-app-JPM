@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import ItemCount from '../Components/ItemCount'
+import React from 'react';
+import ItemCount from '../Components/ItemCount';
+import ItemList from '../Components/ItemList/ItemList'
 
 const home = (props) => {
     return (
@@ -12,7 +13,7 @@ const home = (props) => {
                 <h3>PRODUCTO 1</h3>
             <ItemCount />
             </div>
-
+        <ItemList />
         </div>)
 
 }
