@@ -30,20 +30,26 @@ class ItemList extends Component {
     state = {
         productos: []
     };
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({ productos: listaProductos })
-            console.log('1')
-        }, 3000)
-    }
 
+    nuevoState = () => {
+        new Promise(() => {
+            setTimeout(() => {
+                this.setState({ productos: listaProductos })
+                console.log('1')
+            }, 3000)
+        }
+        )
+    }
+    componentDidMount(){
+        this.nuevoState()
+    }
 
     render() {
 
         const items =
             this.state.productos.map(prod => {
                 return <Item title={prod.title}
-                    key={prod.id}
+                    id={prod.id}
                     price={prod.price}
 
                 />
