@@ -28,32 +28,36 @@ const listaProductos = [
 class ItemList extends Component {
 
     state = {
-        productos: []
+        productos: [],
+        loading: true
     };
 
     nuevoState = () => {
         new Promise(() => {
             setTimeout(() => {
-                this.setState({ productos: listaProductos })
+                this.setState({ productos: listaProductos, loading: false })
                 console.log('1')
+
             }, 3000)
         }
         )
     }
-    componentDidMount(){
+    componentDidMount() {
         this.nuevoState()
     }
 
     render() {
+        let items = "CARGANDO"
+        if (!this.state.loading) {
+            items =
+                this.state.productos.map(prod => {
+                    return <Item title={prod.title}
+                        id={prod.id}
+                        price={prod.price}
 
-        const items =
-            this.state.productos.map(prod => {
-                return <Item title={prod.title}
-                    id={prod.id}
-                    price={prod.price}
-
-                />
-            })
+                    />
+                })
+        } 
 
 
 
