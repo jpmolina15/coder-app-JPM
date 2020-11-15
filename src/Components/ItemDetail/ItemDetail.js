@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from '../Item/Item.module.css';
 import ItemCount from '../ItemCount';
 
 import casaca from '../../assets/camisetaBoca.jpg'
 
 const ItemDetail = (props) => {
-
+    const [items, setItems] = useState(0)
+    const sumarItems = () => {
+        setItems(items + 1)
+    }
+    const sacarItems = () => {
+        if (items > 0){
+        setItems(items - 1)
+    }else if (items === 0){
+        setItems(0)
+    }
+    }
+    
      return (
         <div>
 
@@ -15,7 +26,7 @@ const ItemDetail = (props) => {
                     <p className={classes.Title}>{props.title}</p>
                     <p>Precio: {props.price}</p>
                     <img src={casaca} />
-                    <ItemCount  />
+                    <ItemCount items={items} mas={sumarItems} menos={sacarItems} />
 
                 </article>
 
