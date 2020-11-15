@@ -10,41 +10,29 @@ const listaProductos = [
     },
     {
         id: 2,
-        title: "Zapatillas",
+        title: "Remera",
         price: "$1500"
     },
     {
         id: 3,
-        title: "Zapatillas",
-        price: "$1500"
+        title: "Pantalon",
+        price: "$2000"
     },
     {
         id: 4,
-        title: "Zapatillas",
-        price: "$1500"
+        title: "Campera",
+        price: "$3500"
     }
 ]
 
 class ItemList extends Component {
 
     state = {
-        productos: [],
-        loading: true
+        productos: listaProductos,
+        loading: false
     };
 
-    nuevoState = () => {
-        new Promise(() => {
-            setTimeout(() => {
-                this.setState({ productos: listaProductos, loading: false })
-                console.log('1')
 
-            }, 3000)
-        }
-        )
-    }
-    componentDidMount() {
-        this.nuevoState()
-    }
 
     render() {
         let items = "CARGANDO"
@@ -52,7 +40,7 @@ class ItemList extends Component {
             items =
                 this.state.productos.map(prod => {
                     return <Item title={prod.title}
-                        id={prod.id}
+                        index={prod.id}
                         price={prod.price}
 
                     />
