@@ -3,30 +3,45 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Cart from './Components/Cart/Cart';
 import ItemDetailContainer from './Components/ItemDetail/ItemDetailContainer';
-import NavBar from './Components/NavBar/NavBar'
+import ItemList from './Components/ItemList/ItemList';
+import NavBar from './Components/NavBar/NavBar';
+import CartContext from './context/cartContext'
 import Home from './Containers/Home';
 
 class App extends Component {
+  constructor() {
+    super();
 
+    this.state = {
+      productos: [],
+      AgregarProd: this.AgregarProd,
+    };
+  }
+
+  AgregarProd = (prod) => {
+    if (prod) {
+      this.setState({ productos: [prod, ...this.state.productos] });
+    }
+  };
   render() {
     return (
       <div>
-
-        <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route exact path='/'>
-          <Home greetings="Hola Bienvenido" />
-          </Route>
-          <Route path='/itemDetail'>
-            <ItemDetailContainer />
-          </Route>
-          <Route path='/Cart'>
-            <Cart />
-          </Route>
-        </Switch>
-        </BrowserRouter>
-  
+        <CartContext.Provider value={this.state}>
+          <BrowserRouter>
+            <NavBar />
+            <Switch>
+              <Route exact path='/'>
+                <ItemList />
+              </Route>
+              <Route path='/itemDetail'>
+                <ItemDetailContainer />
+              </Route>
+              <Route path='/Cart'>
+                <Cart />
+              </Route>
+            </Switch>
+          </BrowserRouter>
+        </CartContext.Provider>
       </div>
     );
   }

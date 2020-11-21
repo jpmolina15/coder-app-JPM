@@ -1,4 +1,12 @@
+.carrito {
+    display: flex;
+    justify-content: space-evenly;
+}
 img {
-    max-height: 50px;
+max-height: 50px;
 color: white;
+}
+p {
+    color: white;
+    text-decoration: none;
 }

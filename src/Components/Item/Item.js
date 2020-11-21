@@ -12,11 +12,11 @@ const Item = (props) => {
         setItems(items + 1)
     }
     const sacarItems = () => {
-        if (items > 0){
-        setItems(items - 1)
-    }else if (items === 0){
-        setItems(0)
-    }
+        if (items > 0) {
+            setItems(items - 1)
+        } else if (items === 0) {
+            setItems(0)
+        }
     }
 
     return (
@@ -27,8 +27,7 @@ const Item = (props) => {
             <p className={classes.Title}>{props.title}</p>
             <p>Precio: {props.price}</p>
             <NavLink to={"/itemDetail/:" + props.index}>Detalles</NavLink>
-            <ItemCount items={items} mas={sumarItems} menos={sacarItems} />
-
+            {props.children}
 
         </article >
     )

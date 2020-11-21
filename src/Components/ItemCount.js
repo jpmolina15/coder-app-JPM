@@ -7,14 +7,7 @@ const ItemCount = (props) => {
 
     return (
         <div>
-            <div>
-                <p>Cantidad: {props.items}</p>
-                <button onClick={props.menos}>-</button>
-                <button onClick={props.mas}>+</button>
-            </div>
-            <div>
-                <button>Comprar {props.items}</button>
-            </div>
+                <button onClick={props.comprar}>Comprar</button>
         </div>
     )
 }

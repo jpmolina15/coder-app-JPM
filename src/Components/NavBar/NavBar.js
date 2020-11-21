@@ -4,20 +4,19 @@ import CartIcon from '../CartIcon/Carticon'
 import { Link } from 'react-router-dom';
 
 
-class NavBar extends Component {
-    render() {
+const navBar = (props) => {
         return (
             <div>
                 <ul id='button' className='navbar'>
-                    <Link to='/Cart'><CartIcon className='icono' /></Link>
+                    <Link to='/Cart'><CartIcon className='icono' cant={props.cant} /></Link>
                     <li><a href='/'>Sobre nosotros</a></li>
                     <li><a href='/'>Servicios</a></li>
                     <li><a href='/'>Productos</a></li>
                     <li><a href='/'>Contacto</a></li>
                 </ul>
             </div>
-        )
-    }
-};
+        )}
+    
 
-export default NavBar
+
+export default navBar

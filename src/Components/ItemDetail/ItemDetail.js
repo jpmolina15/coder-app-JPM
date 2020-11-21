@@ -19,15 +19,13 @@ const ItemDetail = (props) => {
     
      return (
         <div>
-
-                <article
+              <article
                     id={props.id}
                     className={classes.Item}>
                     <p className={classes.Title}>{props.title}</p>
                     <p>Precio: {props.price}</p>
                     <img src={casaca} />
                     <ItemCount items={items} mas={sumarItems} menos={sacarItems} />
-
                 </article>
 
         </div>
