@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import classes from '../Item/Item.module.css';
+
 import ItemDetail from './ItemDetail';
 
 
@@ -33,8 +33,8 @@ const ItemDetailContainer = (props) => {
         });
 
         console.log("Esa");
-    }, [itemDetails]);
-    
+    }, []);
+
     return (
         <div>
 

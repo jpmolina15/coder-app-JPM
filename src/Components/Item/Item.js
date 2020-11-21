@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classes from './Item.module.css';
-import { NavLink, Router } from 'react-router-dom';
-import ItemCount from '../ItemCount';
+import { NavLink} from 'react-router-dom';
+
 
 
 

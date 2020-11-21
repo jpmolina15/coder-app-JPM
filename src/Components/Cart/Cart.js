@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import NavBar from '../NavBar/NavBar'
+
 import CartContext from '../../context/cartContext';
 import { Link } from 'react-router-dom';
 

@@ -24,8 +24,8 @@ const ItemDetail = (props) => {
                     className={classes.Item}>
                     <p className={classes.Title}>{props.title}</p>
                     <p>Precio: {props.price}</p>
-                    <img src={casaca} />
-                    <ItemCount items={items} mas={sumarItems} menos={sacarItems} />
+                    <img src={casaca} alt={"camiseta"}/>
+                    <ItemCount />
                 </article>
 
         </div>

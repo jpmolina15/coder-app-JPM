@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './NavBar.css'
 import CartIcon from '../CartIcon/Carticon'
 import { Link } from 'react-router-dom';
@@ -9,10 +9,10 @@ const navBar = (props) => {
             <div>
                 <ul id='button' className='navbar'>
                     <Link to='/Cart'><CartIcon className='icono' cant={props.cant} /></Link>
-                    <li><a href='/'>Sobre nosotros</a></li>
-                    <li><a href='/'>Servicios</a></li>
-                    <li><a href='/'>Productos</a></li>
-                    <li><a href='/'>Contacto</a></li>
+                    <Link to="/" className="item"> Inicio</Link>
+                    <Link to="/" className="item"> Inicio</Link>
+                    <Link to="/" className="item"> Inicio</Link>
+                    <Link to="/" className="item"> Inicio</Link>
                 </ul>
             </div>
         )}

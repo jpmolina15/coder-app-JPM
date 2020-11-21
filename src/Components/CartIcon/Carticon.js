@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
 import icono from '../../assets/peli.png';
 import './CartIcon.css';
 import CartContext from '../../context/cartContext'
