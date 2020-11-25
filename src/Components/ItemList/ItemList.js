@@ -46,13 +46,18 @@ const ItemList = (props) => {
     const getDB = (id) => {
         const DB = GetDBFireBase();
 
-        const productos = DB.collection("prodcutos").doc(id)
+        const productos = DB.collection("productos")
+// .doc(id)
 
-        productos.get()
-            .then((doc) => {
-                console.log(doc.data())
+        productos
+            .get()
+            .then((res) => {
+                // console.log(res)
+                // console.log(res.data)
 
-                if (doc === 0) { console.log('no hay resultados') }
+                res.docs.map((doc) => {
+                    console.log(doc.data())
+                })
             })
             .catch(() => console.log('mal ahi'))
             .finally(() => { })
@@ -66,17 +71,19 @@ const ItemList = (props) => {
         >
             <ItemCount comprar={() => context.AgregarProd(prod)} />
         </Item >
-            <button onClick={() => getDB("Hm5ZkpmdTeZ74PcyhbTG")} >PROBANDO </button>
+            <button onClick={() => getDB(
+                // "Hm5ZkpmdTeZ74PcyhbTG"
+            )} >PROBANDO </button>
         </div>)
     })
 
     return (
-            <div>
-                {/* <NavBar cant={this.state.cantidad}/> */}
-                <div className={classes.Lista}>
-                    {lista}
-                </div>
+        <div>
+            {/* <NavBar cant={this.state.cantidad}/> */}
+            <div className={classes.Lista}>
+                {lista}
             </div>
+        </div>
 
     )
 
