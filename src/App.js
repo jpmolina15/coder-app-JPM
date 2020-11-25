@@ -6,7 +6,7 @@ import ItemDetailContainer from './Components/ItemDetail/ItemDetailContainer';
 import ItemList from './Components/ItemList/ItemList';
 import NavBar from './Components/NavBar/NavBar';
 import CartContext from './context/cartContext'
-
+import {GetDBFireBase} from './tools/firebaseFactory'
 
 class App extends Component {
   constructor() {
