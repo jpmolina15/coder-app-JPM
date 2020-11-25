@@ -3,12 +3,12 @@ import classes from './ItemList.module.css'
 import Item from '../Item/Item'
 import ItemCount from '../ItemCount';
 import CartContext from '../../context/cartContext'
-
+import { GetDBFireBase } from '../../tools/firebaseFactory'
 
 
 
 const ItemList = (props) => {
-    const context = useContext(CartContext);
+
     const listaProductos = [
         {
             id: 1,
@@ -41,8 +41,23 @@ const ItemList = (props) => {
     const [items, setItems] = useState(0)
     const [cantidad, setCantidad] = useState(0)
 
+    const context = useContext(CartContext);
 
-    
+    const getDB = (id) => {
+        const DB = GetDBFireBase();
+
+        const productos = DB.collection("prodcutos").doc(id)
+
+        productos.get()
+            .then((doc) => {
+                console.log(doc.data())
+
+                if (doc === 0) { console.log('no hay resultados') }
+            })
+            .catch(() => console.log('mal ahi'))
+            .finally(() => { })
+    }
+
     const lista = listaProductos.map(prod => {
         return (<div><Item title={prod.title}
             index={prod.id}
@@ -51,16 +66,17 @@ const ItemList = (props) => {
         >
             <ItemCount comprar={() => context.AgregarProd(prod)} />
         </Item >
+            <button onClick={() => getDB("Hm5ZkpmdTeZ74PcyhbTG")} >PROBANDO </button>
         </div>)
     })
 
     return (
-        <div>
-            {/* <NavBar cant={this.state.cantidad}/> */}
-            <div className={classes.Lista}>
-                {lista}
+            <div>
+                {/* <NavBar cant={this.state.cantidad}/> */}
+                <div className={classes.Lista}>
+                    {lista}
+                </div>
             </div>
-        </div>
 
     )
 
