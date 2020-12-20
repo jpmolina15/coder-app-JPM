@@ -9,9 +9,9 @@ const navBar = (props) => {
             <div>
                 <ul id='button' className='navbar'>
                     <Link to='/Cart'><CartIcon className='icono' cant={props.cant} /></Link>
-                    <Link to="/" className="item"> Inicio</Link>
-                    <Link to="/" className="item"> Inicio</Link>
-                    <Link to="/" className="item"> Inicio</Link>
+                    <Link to="/" className="item"> Catalogo</Link>
+                    <Link to="/category/:1" className="item"> Camisetas</Link>
+                    <Link to="/categoria" className="item"> Camperas</Link>
                     <Link to="/" className="item"> Inicio</Link>
                 </ul>
             </div>

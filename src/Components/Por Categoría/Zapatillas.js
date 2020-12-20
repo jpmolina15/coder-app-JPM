@@ -7,66 +7,96 @@ import { GetDBFireBase } from '../../tools/firebaseFactory'
 
 
 
-const ItemList = (props) => {
+const CamisetaList = (props) => {
 
-    const context = useContext(CartContext);
+    let listaProductos = [
+        {
+            id: 1,
+            title: "Zapatillas",
+            price: 1500,
+            cantidad: 0
+        },
+        {
+            id: 2,
+            title: "Remera",
+            price: 1500,
+            cantidad: 0
+        },
+        {
+            id: 3,
+            title: "Pantalon",
+            price: 2000,
+            cantidad: 0
+        },
+        {
+            id: 4,
+            title: "Campera",
+            price: 3500,
+            cantidad: 0
+        }
+    ]
+
     // const [productos, setProductos] = useState(listaProductos)
 
     // const [items, setItems] = useState(0);
     // const [cantidad, setCantidad] = useState(0);
     const [item, setItem] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const context = useContext(CartContext);
     const DB = GetDBFireBase();
 
-    
+
+
+
     useEffect(() => {
         setLoading(true);
         const products = DB.collection("productos")
-        products
+
+        const filter = products.where("categoryId", "==", 2)
+        filter
             .get()
             .then((product) => {
                 setItem(product);
 
-
                 let lista = []
                 product.docs.map(doc => {
                     lista.push(doc.data())
-                    console.log(doc.data())
+                    console.log(doc.data().image)
                 })
                 setItem(lista)
                 console.log("item" + item)
 
-                setLoading(false)
 
+                setLoading(false)
+                console.log(loading)
             });
 
-        console.log("Use Effect");
+        console.log("Esa");
     }, []);
 
     let carrito = []
     if (item.length > 0) {
-        carrito = item.map((prod, i) => {
-
+        carrito = item.map(prod => {
+            console.log("Carrito" + prod)
             return (<div>
 
                 <Item title={prod.title}
-                    key={i}
-
+                    index={prod.id}
                     price={prod.price}
-                >
 
+                >
                     <ItemCount comprar={() => context.AgregarProd(prod)} />
-                    <button onClick={() => console.log(prod)}>ID</button>
                 </Item >
             </div>)
         })
     }
+    
 
     return (
         <div>
             {loading ? (
 
-                <p>Cargando..</p>
+                <h2>Cargando..</h2>
 
             ) : (
                     <div className={classes.Lista}>
@@ -81,4 +111,4 @@ const ItemList = (props) => {
 }
 
 
-export default ItemList
+export default CamisetaList
