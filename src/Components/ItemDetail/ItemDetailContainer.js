@@ -4,18 +4,10 @@ import CartContext from '../../context/cartContext'
 import ItemDetail from './ItemDetail';
 import ItemCount from '../ItemCount';
 
-let producto = {
-    id: 1,
-    title: "Zapatillas",
-    price: "$1500"
-
-};
 
 
 
-const itemDetails = new Promise((result, reject) =>
-    setTimeout(() => result(producto), 3000)
-);
+
 
 
 
@@ -42,11 +34,6 @@ const ItemDetailContainer = (props) => {
 
                     setItem(lista);
                     
-                    // product.data().map(doc => {
-                        
-                    //     console.log(doc.data())
-                    // })
-                    // setItem(lista)
                     console.log("item" + item)
 
                     setLoading(false)
@@ -64,7 +51,7 @@ const ItemDetailContainer = (props) => {
 
                 <ItemDetail title={prod.description}
                     index={prod.id}
-                    index={prod.id}
+
                     price={prod.price}
 
                 >

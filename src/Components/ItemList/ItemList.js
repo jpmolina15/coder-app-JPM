@@ -3,7 +3,12 @@ import classes from './ItemList.module.css'
 import Item from '../Item/Item'
 import ItemCount from '../ItemCount';
 import CartContext from '../../context/cartContext'
-import { GetDBFireBase } from '../../tools/firebaseFactory'
+import { GetDBFireBase } from '../../tools/firebaseFactory';
+import camisetaBoca from '../../assets/camisetaBoca.jpg';
+import camisetaArgentina from '../../assets/camisetaArgentina.jpeg';
+import camisetaRiver from '../../assets/camisetaRiver.jpeg';
+import camperaBoca from '../../assets/camperaBoca.jpeg';
+
 
 
 
@@ -46,17 +51,29 @@ const ItemList = (props) => {
     let carrito = []
     if (item.length > 0) {
         carrito = item.map((prod, i) => {
-
+            let foto = null
+            if (prod.image === 'camisetaArgentina') {
+                foto = camisetaArgentina
+            }
+            if(prod.image === 'camisetaBoca') {
+                foto = camisetaBoca
+            }
+            if(prod.image === 'camisetaRiver') {
+                foto = camisetaRiver
+            }
+            if(prod.image === 'camperaBoca') {
+                foto = camperaBoca
+            }
             return (<div>
 
                 <Item title={prod.title}
                     key={i}
-
+                    image={foto}
                     price={prod.price}
                 >
 
                     <ItemCount comprar={() => context.AgregarProd(prod)} />
-                    <button onClick={() => console.log(prod)}>ID</button>
+                    <button onClick={() => console.log(prod.image)}>Imagen</button>
                 </Item >
             </div>)
         })

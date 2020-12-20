@@ -9,37 +9,6 @@ import { GetDBFireBase } from '../../tools/firebaseFactory'
 
 const CamisetaList = (props) => {
 
-    let listaProductos = [
-        {
-            id: 1,
-            title: "Zapatillas",
-            price: 1500,
-            cantidad: 0
-        },
-        {
-            id: 2,
-            title: "Remera",
-            price: 1500,
-            cantidad: 0
-        },
-        {
-            id: 3,
-            title: "Pantalon",
-            price: 2000,
-            cantidad: 0
-        },
-        {
-            id: 4,
-            title: "Campera",
-            price: 3500,
-            cantidad: 0
-        }
-    ]
-
-    // const [productos, setProductos] = useState(listaProductos)
-
-    // const [items, setItems] = useState(0);
-    // const [cantidad, setCantidad] = useState(0);
     const [item, setItem] = useState([]);
     const [loading, setLoading] = useState(true);
     const context = useContext(CartContext);
@@ -73,24 +42,24 @@ const CamisetaList = (props) => {
 
         console.log("Esa");
     }, []);
-    const getByWhere = () => {
-        const producto = DB.collection("productos")
-        const filter = producto.where("categoryId", "==", 1)
+    // const getByWhere = () => {
+    //     const producto = DB.collection("productos")
+    //     const filter = producto.where("categoryId", "==", 1)
 
-        filter
-            .get()
-            .then((res) => {
-                if (res.size == 0) {
-                    console.log("no result  ")
-                } else {
-                    res.docs.map((doc) => {
-                        console.log(doc.data())
-                    })
-                }
-            }
-            )
-            .catch()
-    }
+    //     filter
+    //         .get()
+    //         .then((res) => {
+    //             if (res.size == 0) {
+    //                 console.log("no result  ")
+    //             } else {
+    //                 res.docs.map((doc) => {
+    //                     console.log(doc.data())
+    //                 })
+    //             }
+    //         }
+    //         )
+    //         .catch()
+    // }
 
     let carrito = []
     if (item.length > 0) {

@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useState } from 'react'
 import './Cart.css'
 import CartContext from '../../context/cartContext';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { GetDBFireBase } from '../../tools/firebaseFactory'
 
 
@@ -12,8 +12,9 @@ const Cart = (props) => {
     const [telefono, setTelefono] = useState('')
     const [mail, setMail] = useState('')
     const [ordenId, setOrdenId] = useState('')
-    const [encargo, setEncargo] = useState(false)
-    let comprando = true
+    const [encargo, setEncargo] = useState(false);
+    const [cuentaPedida, setPedirCuenta] = useState(false)
+
     let precioTotal = []
     let precio = 0
     let cuenta = null
@@ -32,10 +33,7 @@ const Cart = (props) => {
     function handleChangeMail(event) {
         setMail(event.target.value);
     }
-    const comprar = () => {
-        comprando = !comprando
-        console.log(comprando)
-    }
+
     let nuevaOrden = {
         cliente: {
             name: "AAAA",
@@ -65,6 +63,7 @@ const Cart = (props) => {
         postOrden()
         setEncargo(true)
         console.log(nuevaOrden)
+        setPedirCuenta(true)
     }
 
     if (context.productos.length > 0) {
@@ -79,7 +78,24 @@ const Cart = (props) => {
         precioTotal.forEach(function (numero) {
             precio += numero;
         })
-        cuenta = <h3>Precio Total: {precio}</h3>;
+        cuenta = <div><h3>Precio Total: {precio}</h3>
+            <label>
+                Nombre:
+                </label>
+            <input type="text" value={name} onChange={handleChangeName} />
+            <br />
+            <label>
+                telefono:
+                </label>
+            <input type="text" value={telefono} onChange={handleChangeTel} />
+            <br />
+            <label>
+                Mail:
+                </label>
+            <input type="email" value={mail} onChange={handleChangeMail} />
+
+            <button onClick={orden}>Ordenar</button>
+        </div>;
     }
 
 
@@ -101,10 +117,18 @@ const Cart = (props) => {
 
         </div>
     }
+    let finalizar = <div><h1>Tú Carrito </h1>
+        {carrito}
+        <div>{cuenta}</div>
 
+    </div>
+    if (cuentaPedida) {
+        finalizar = <div>{ordenCompleta}</div>
+    }
     return (
         <Fragment>
-            <h1>Tú Carrito </h1>
+            {finalizar}
+            {/* <h1>Tú Carrito </h1>
             {carrito}
             <div>{cuenta}</div>
 
@@ -124,8 +148,8 @@ const Cart = (props) => {
                 </label>
             <input type="email" value={mail} onChange={handleChangeMail} />
 
-            <button onClick={orden}>Ordenar</button>
-            {ordenCompleta}
+            <button onClick={orden}>Ordenar</button> */}
+            {/* {ordenCompleta} */}
 
         </Fragment>
     )

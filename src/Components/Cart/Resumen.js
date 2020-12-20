@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import './Cart.css'
 import CartContext from '../../context/cartContext';
 import { Link, NavLink } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Resumen = (props) => {
     const context = useContext(CartContext);
-    const [hide, setHide] = useState('hide')
+
     let comprando = true
 
     let precioTotal = []
@@ -18,10 +18,6 @@ const Resumen = (props) => {
         <Link to="/">Por favor elige uno</Link>
     </div>
 
-    const comprar = () => {
-        comprando = !comprando
-        console.log(comprando)
-    }
     if (context.productos.length > 0) {
         carrito = context.productos.map(prod => {
             precioTotal.push(prod.price)
