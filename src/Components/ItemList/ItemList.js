@@ -73,7 +73,7 @@ const ItemList = (props) => {
                 >
 
                     <ItemCount comprar={() => context.AgregarProd(prod)} />
-                    <button onClick={() => console.log(prod.image)}>Imagen</button>
+
                 </Item >
             </div>)
         })
